@@ -74,7 +74,7 @@ const getExecutablePath = (root, platform, revision) => {
   const folder = getFolderPath(root, platform, revision)
   const archiveFolder = archiveName(platform, revision)
 
-  if (platform === 'mac') {
+  if (platform === 'mac' || platform === 'mac_arm') {
     return `${folder}/${archiveFolder}/Chromium.app/Contents/MacOS/Chromium`
   }
   if (platform === 'linux') {
