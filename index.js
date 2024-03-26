@@ -36,12 +36,15 @@ const downloadURLs = {
   win32:
     'https://storage.googleapis.com/chromium-browser-snapshots/Win/%d/%s.zip',
   win64:
-    'https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/%d/%s.zip'
+    'https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/%d/%s.zip',
+  mac_arm:
+    'https://storage.googleapis.com/chromium-browser-snapshots/Mac_ARM/%d/%s.zip',
 }
 
 const archiveName = (platform, revision) => {
   if (platform === 'linux') return 'chrome-linux'
   if (platform === 'mac') return 'chrome-mac'
+  if (platform === 'mac_arm') return 'chrome-mac'
   if (platform === 'win32' || platform === 'win64') {
     return revision > revisionChange ? 'chrome-win' : 'chrome-win32'
   }
@@ -57,7 +60,7 @@ const downloadURL = (platform, revision) => {
 }
 
 const currentPlatform = (p => {
-  if (p === 'darwin') return 'mac'
+  if (p === 'darwin') return os.arch() === 'arm64' ? 'mac_arm' : 'mac'
   if (p === 'linux') return 'linux'
   if (p === 'win32') return os.arch() === 'x64' ? 'win64' : 'win32'
   return ''
