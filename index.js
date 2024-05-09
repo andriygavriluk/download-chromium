@@ -38,7 +38,7 @@ const downloadURLs = {
   win64:
     'https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/%d/%s.zip',
   mac_arm:
-    'https://storage.googleapis.com/chromium-browser-snapshots/Mac_ARM/%d/%s.zip',
+    'https://storage.googleapis.com/chromium-browser-snapshots/Mac_Arm/%d/%s.zip',
 }
 
 const archiveName = (platform, revision) => {
